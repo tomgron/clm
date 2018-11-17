@@ -1,16 +1,12 @@
-import React, { Component } from 'react'
-import {IAllStores} from '../store'
-import {IUser, User, IUserStore} from '../store/userStore'
-import { inject, observer } from 'mobx-react';
+import React, { Component } from "react";
+import { IAllStores } from "../store";
+import { IUser, User, IUserStore } from "../store/userStore";
+import { inject, observer } from "mobx-react";
 
-@inject('allStores')
+@inject("allStores")
 @observer
-export default class Login extends Component {
+export default class Login extends Component<any> {
   render() {
-    return (
-      <div>
-        LOGIN PAGE
-      </div>
-    )
+    return <div>LOGIN PAGE</div>;
   }
 }
