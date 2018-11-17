@@ -13,11 +13,7 @@ export interface IUser {
 }
 export class UserStore implements IUserStore {
     @observable public users:User[] = []
-
-    @action addUser(user:IUser) {
-        console.log("adding user");
-        this.users.push(user)
-    }
+    @action addUser = (user:IUser) => this.users.push(user)
 }
 
 export class User implements IUser {

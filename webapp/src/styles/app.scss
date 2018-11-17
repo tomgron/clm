@@ -1,12 +1,13 @@
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin:0;
     padding:0;
+    background-color: #222;
+    line-height: 1.6em;
+    font-size:1.2em;
 }
-.app {
-    display: flex;
 
-}
 .content {
-    margin:2em;
+    padding:1.5em;
+    background-color: #fff;
 }

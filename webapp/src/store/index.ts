@@ -1,14 +1,17 @@
-import {observable, action} from 'mobx'
-import {IUser, UserStore, User} from './userStore'
+import { CertificateStore } from './certificateStore';
+import {UserStore} from './userStore'
+
 /* Interfaces */
 
 export interface IAllStores {
-    userStore:UserStore
+    userStore:UserStore,
+    certificateStore:CertificateStore
 }
 
 /* Classes */
 export class AllStores implements IAllStores {
     public userStore:UserStore = new UserStore();
+    public certificateStore = new CertificateStore();
 }
 
 /* Ready made instance export */ 
