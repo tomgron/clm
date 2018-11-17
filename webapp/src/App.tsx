@@ -13,7 +13,7 @@ export default class App extends Component {
     return (
       <Provider allStores={allStores}>
         <Router>
-          <div>
+          <div className="app">
             <Header/>
             <div className="content">
               <Route path="/" exact component={Main}/>        
