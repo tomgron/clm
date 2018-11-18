@@ -25,7 +25,7 @@ export default class Login extends Component<any, any> {
     };
 
     if (this.state.redirectToReferrer === true) {
-     console.log(store.userStore.loggedInReturnUrl);
+      console.log(store.userStore.loggedInReturnUrl);
 
       return <Redirect to={store.userStore.loggedInUser ? store.userStore.loggedInReturnUrl : "/"} />;
     } else {
