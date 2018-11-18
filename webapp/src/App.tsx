@@ -4,6 +4,7 @@ import { Provider } from "mobx-react";
 import { allStores } from "./store";
 import Main from "./pages/Main";
 import Header from "./components/Header";
+import PrivateRoute from './components/PrivateRoute'
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
 import Colors from "./pages/Colors";
@@ -24,7 +25,7 @@ export default class App extends Component {
             <div className="content">
               <Route path="/" exact component={Main} />
               <Route path="/login" exact component={Login} />
-              <Route path="/colors" component={Colors} />
+              <PrivateRoute path="/colors" component={Colors} />
             </div>
             <Footer />
           </div>

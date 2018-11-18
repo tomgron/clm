@@ -1,12 +1,41 @@
 import React, { Component } from "react";
-import { AllStoresInterface } from "../store";
-import { UserInterface, User, UserStoreInterface } from "../store/userStore";
+import { User } from "../store/userStore";
 import { inject, observer } from "mobx-react";
+import { Redirect } from "react-router-dom";
 
 @inject("allStores")
 @observer
-export default class Login extends Component<any> {
+export default class Login extends Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToReferrer: false
+    };
+  }
+
   render() {
-    return <div>LOGIN PAGE</div>;
+    const { ...store } = this.props.allStores;
+
+    const login = (e: any) => {
+      e.preventDefault();
+      store.userStore.loggedInUser = new User();
+      this.setState(() => ({
+        redirectToReferrer: true
+      }));
+    };
+
+    if (this.state.redirectToReferrer === true) {
+     console.log(store.userStore.loggedInReturnUrl);
+
+      return <Redirect to={store.userStore.loggedInUser ? store.userStore.loggedInReturnUrl : "/"} />;
+    } else {
+      return (
+        <div>
+          <div>username</div>
+          <div>password</div>
+          <button onClick={login}>login</button>
+        </div>
+      );
+    }
   }
 }
