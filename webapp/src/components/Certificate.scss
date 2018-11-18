@@ -1,7 +1,9 @@
+@import "../styles/_colors.scss";
+
 .certificate {
     padding:2em;
     margin-right:2em;
-    background-color: #B4C5E4;
+    background-color: $light_gray;
     cursor: pointer;
 
     &-expiring {
@@ -18,6 +20,7 @@
     }
 
     &:hover {
-        background-color: #C1CFE8;
+        background-color: $dim_gray;
+        color:$white
     }
 }

@@ -12,8 +12,8 @@ export default class Main extends Component<any, any> {
     const { ...allStores } = this.props.allStores;
 
     const removeCertificate = (certificate: CertificateInterface) => {
-      allStores.certificateStore.removeCertificate(certificate.thumbprint)
-    }
+      allStores.certificateStore.removeCertificate(certificate.thumbprint);
+    };
     return (
       <div className="certificateList">
         {allStores.certificateStore.certificates.map((i: CertificateInterface) => {
@@ -22,7 +22,7 @@ export default class Main extends Component<any, any> {
               <Certificate {...i} />
               <button onClick={() => removeCertificate(i)}>Remove</button>
             </div>
-          )
+          );
         })}
       </div>
     );

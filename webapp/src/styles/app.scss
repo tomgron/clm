@@ -4,14 +4,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin:0;
     padding:0;
-    background-color: #3C3744;
+    background-color: $gunmetal;
     line-height: 1.6em;
     font-size:1.2em;
 }
 
 .content {
     padding:1.5em;
-    background-color: #FBFFF1;
+    background-color: $white;
 }
 
 .certificateList {
