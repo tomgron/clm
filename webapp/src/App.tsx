@@ -6,7 +6,7 @@ import Main from "./pages/Main";
 import Header from "./components/Header";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
-import Colors from './pages/Colors'
+import Colors from "./pages/Colors";
 import "./styles/app.scss";
 import { Certificate } from "./store/certificateStore";
 
@@ -24,7 +24,7 @@ export default class App extends Component {
             <div className="content">
               <Route path="/" exact component={Main} />
               <Route path="/login" exact component={Login} />
-              <Route path="/colors" component={Colors}/>
+              <Route path="/colors" component={Colors} />
             </div>
             <Footer />
           </div>
