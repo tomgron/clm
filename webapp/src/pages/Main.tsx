@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { IAllStores } from "../store";
-import { IUser, User, IUserStore } from "../store/userStore";
+import { AllStoresInterface } from "../store";
+import { UserInterface, User, UserStoreInterface } from "../store/userStore";
 import { inject, observer } from "mobx-react";
-import { ICertificate } from "../store/certificateStore";
+import { CertificateInterface } from "../store/certificateStore";
 import Certificate from "../components/Certificate";
 
 @inject("allStores")
@@ -13,7 +13,7 @@ export default class Main extends Component<any, any> {
 
     return (
       <div>
-        {allStores.certificateStore.certificates.map((i: ICertificate) => {
+        {allStores.certificateStore.certificates.map((i: CertificateInterface) => {
           return <Certificate key={i.thumbprint} {...i} />;
         })}
       </div>

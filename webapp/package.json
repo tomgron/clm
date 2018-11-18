@@ -16,6 +16,7 @@
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "tslint": "^5.11.0",
     "typescript": "3.1.6"
   },
   "prettier": {
@@ -26,7 +27,8 @@
     "build": "yarn prettier && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write **/*.ts **/*.tsx"
+    "prettier": "prettier --write **/*.ts **/*.tsx",
+    "tslint": "tslint ./src/**/*.ts ./src/**/*.tsx --fix --project ./tsconfig.json"
   },
   "eslintConfig": {
     "extends": "react-app"

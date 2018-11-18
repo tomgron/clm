@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { ICertificate } from "../store/certificateStore";
+import { CertificateInterface } from "../store/certificateStore";
 import "./Certificate.scss";
 
-export default class Certificate extends Component<ICertificate> {
+export default class Certificate extends Component<CertificateInterface> {
   render() {
     return (
       <div className="certificate">

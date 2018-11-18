@@ -3,13 +3,13 @@ import { UserStore } from "./userStore";
 
 /* Interfaces */
 
-export interface IAllStores {
+export interface AllStoresInterface {
   userStore: UserStore;
   certificateStore: CertificateStore;
 }
 
 /* Classes */
-export class AllStores implements IAllStores {
+export class AllStores implements AllStoresInterface {
   public userStore: UserStore = new UserStore();
   public certificateStore = new CertificateStore();
 }
