@@ -1,8 +1,23 @@
 .certificate {
     padding:2em;
-    border: 1px solid #333;
+    margin-right:2em;
+    background-color: #7f7;
+    cursor: pointer;
+
+    &-expiring {
+        padding:2em;
+        margin-right:2em;
+        background-color: #ff0;
+    }
+
+    &-expired {
+        padding:2em;
+        margin-right:2em;
+        background-color: #f00;
+        color:white;
+    }
 }
 
 .certificate:hover {
-    background-color: red;
+    background-color: rgb(196, 255, 169);
 }
