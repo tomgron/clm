@@ -11,6 +11,7 @@
     "babel-plugin-inline-react-svg": "^1.0.1",
     "mobx": "^5.6.0",
     "mobx-react": "^5.3.6",
+    "mobx-react-router": "^4.0.5",
     "node-sass": "^4.10.0",
     "prettier": "^1.15.2",
     "react": "^16.6.3",

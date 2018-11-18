@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 export default class LoginLogout extends Component<any, any> {
     render() {
         const {...userStore} = this.props.allStores
+        const { location, push, goBack } = this.props.allStores.routingStore
 
-        return userStore.loggedInUser ? <div>Logout</div> : <Link to="/login">Login</Link>;
+        const logout = () => userStore.logout()
+
+        return userStore.loggedInUser ? <Link to="#" onClick={logout}>Logout</Link> : <Link to="/login">Login</Link>;
   }
 }

@@ -9,7 +9,7 @@ import Certificate from "../components/Certificate";
 @observer
 export default class Main extends Component<any, any> {
   render() {
-    const { ...allStores } = this.props.allStores;
+    const { ...allStores } = this.props.allStores
 
     const removeCertificate = (certificate: CertificateInterface) => {
       allStores.certificateStore.removeCertificate(certificate.thumbprint);

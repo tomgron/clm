@@ -1,3 +1,4 @@
+import { RouterStore } from "mobx-react-router"
 import { CertificateStore } from "./certificateStore";
 import { UserStore } from "./userStore";
 
@@ -12,6 +13,7 @@ export interface AllStoresInterface {
 export class AllStores implements AllStoresInterface {
   public userStore: UserStore = new UserStore();
   public certificateStore = new CertificateStore();
+  public routingStore = new RouterStore();
 }
 
 /* Ready made instance export */
