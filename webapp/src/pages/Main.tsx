@@ -10,7 +10,7 @@ import Certificate from "../components/Certificate";
 export default class Main extends Component<any, any> {
   render() {
     const { ...allStores } = this.props.allStores;
- 
+
     return (
       <div className="certificateList">
         {allStores.certificateStore.certificates.map((i: CertificateInterface) => {
