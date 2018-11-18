@@ -11,10 +11,18 @@ export default class Main extends Component<any, any> {
   render() {
     const { ...allStores } = this.props.allStores;
 
+    const removeCertificate = (certificate: CertificateInterface) => {
+      allStores.certificateStore.removeCertificate(certificate.thumbprint)
+    }
     return (
       <div className="certificateList">
         {allStores.certificateStore.certificates.map((i: CertificateInterface) => {
-          return <Certificate key={i.thumbprint} {...i} />;
+          return (
+            <div key={i.thumbprint}>
+              <Certificate {...i} />
+              <button onClick={() => removeCertificate(i)}>Remove</button>
+            </div>
+          )
         })}
       </div>
     );

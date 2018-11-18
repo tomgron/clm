@@ -16,7 +16,7 @@ export default class Certificate extends Component<any, any> {
     };
 
     return (
-      <div className="certificate" onClick={onClick}>
+      <div className="certificate">
         <img src={CertIcon} width={40} />
         <div>Name: {this.props.name}</div>
         <div>Thumbprint: {this.props.thumbprint}</div>
