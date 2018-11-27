@@ -6,14 +6,20 @@ import { Link } from "react-router-dom";
 @inject("allStores")
 @observer
 export default class LoginLogout extends Component<any, any> {
-    render() {
-        const {...userStore} = this.props.allStores
-        const { location, push, goBack } = this.props.allStores.routingStore
+  render() {
+    const { ...userStore } = this.props.allStores;
+    const { location, push, goBack } = this.props.allStores.routingStore;
 
-        const logout = () => userStore.logout()
+    const logout = () => userStore.logout();
 
-        console.log(userStore)
+    console.log(userStore);
 
-        return userStore.loggedInUser ? <Link to="#" onClick={logout}>Logout</Link> : <Link to="/login">Login</Link>;
+    return userStore.loggedInUser ? (
+      <Link to="#" onClick={logout}>
+        Logout
+      </Link>
+    ) : (
+      <Link to="/login">Login</Link>
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { RouterStore } from "mobx-react-router"
+import { RouterStore } from "mobx-react-router";
 import { CertificateStore } from "./certificateStore";
 import { UserStore } from "./userStore";
 

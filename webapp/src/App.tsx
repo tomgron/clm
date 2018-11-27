@@ -8,12 +8,11 @@ import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
 import Colors from "./pages/Colors";
-import Test from "./pages/Test"
+import Test from "./pages/Test";
 import "./styles/app.scss";
 import { Certificate } from "./store/certificateStore";
-import createBrowserHistory from "history/createBrowserHistory"
-import { RouterStore, syncHistoryWithStore, SynchronizedHistory } from "mobx-react-router"
-
+import createBrowserHistory from "history/createBrowserHistory";
+import { RouterStore, syncHistoryWithStore, SynchronizedHistory } from "mobx-react-router";
 
 export default class App extends Component<any, any> {
   render() {
@@ -23,7 +22,7 @@ export default class App extends Component<any, any> {
 
     const browserHistory = createBrowserHistory();
 
-    const history = syncHistoryWithStore(browserHistory, allStores.routingStore) as SynchronizedHistory;
+    const history = syncHistoryWithStore(browserHistory, allStores.routingStore);
 
     return (
       <Provider allStores={allStores}>

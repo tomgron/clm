@@ -7,16 +7,16 @@ import Login from "../pages/Login";
 @observer
 class PrivateRoute extends Component<any, any> {
   render() {
-    const { component: Component, ...rest } = this.props
-    const { ...stores } = this.props.allStores
+    const { component: Component, ...rest } = this.props;
+    const { ...stores } = this.props.allStores;
 
     return (
       <Route
         {...rest}
         render={props => {
-          stores.userStore.loggedInReturnUrl = this.props.path
+          stores.userStore.loggedInReturnUrl = this.props.path;
 
-          return stores.userStore.loggedInUser ? <Component {...props} /> : <Login/>
+          return stores.userStore.loggedInUser ? <Component {...props} /> : <Login />;
         }}
       />
     );
