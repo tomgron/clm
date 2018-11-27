@@ -12,6 +12,8 @@ export default class LoginLogout extends Component<any, any> {
 
         const logout = () => userStore.logout()
 
+        console.log(userStore)
+
         return userStore.loggedInUser ? <Link to="#" onClick={logout}>Logout</Link> : <Link to="/login">Login</Link>;
   }
 }
