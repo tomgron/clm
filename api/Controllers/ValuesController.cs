@@ -19,15 +19,17 @@ namespace api.Controllers
             {
                 new Certificate
                 {
-                    Name = "Foocert1",
+                    Name = "www.calm.fi",
                     ValidFrom = DateTime.Parse("1.1.2017"),
-                    ValidThrough =  DateTime.Parse("31.12.2018")
+                    ValidThrough =  DateTime.Parse("31.12.2018"),
+                    Thumbprint = "6834dd70b477e9618ca303465f4950ef71cf2420"
                 },
                 new Certificate
                 {
-                    Name = "Barcert2",
+                    Name = "*.calm.fi",
                     ValidFrom = DateTime.Parse("4.5.2018"),
-                    ValidThrough = DateTime.Parse("8.10.2019")
+                    ValidThrough = DateTime.Parse("8.10.2019"),
+                    Thumbprint = "d637ff254c687465ab729c99e3526a8fdbb8dd40"
                 }
             };
         }

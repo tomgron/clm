@@ -10,5 +10,6 @@ namespace api.Models
         public string Name { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidThrough { get; set; }
+        public string Thumbprint { get; set; }
     }
 }
