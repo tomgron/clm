@@ -21,7 +21,7 @@ export default class Test extends Component<any, any> {
     const getData = () => {
       this.setState({ loading: true, dataAvailable: false });
 
-      fetch("https://localhost:44304/api/values", {
+      fetch("http://localhost:5000/api/values", {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
