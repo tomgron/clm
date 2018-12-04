@@ -13,6 +13,7 @@ import "./styles/app.scss";
 import { Certificate } from "./store/certificateStore";
 import createBrowserHistory from "history/createBrowserHistory";
 import { RouterStore, syncHistoryWithStore, SynchronizedHistory } from "mobx-react-router";
+import { Auth } from "./components/Auth";
 
 export default class App extends Component<any, any> {
   render() {
@@ -28,6 +29,7 @@ export default class App extends Component<any, any> {
             <div className="content">
               <Route path="/" exact component={Main} />
               <Route path="/login" exact component={Login} />
+              <Route path="/callback" exact component={Auth} />
               <Route path="/test" exact component={Test} />
               <PrivateRoute path="/colors" component={Colors} />
             </div>

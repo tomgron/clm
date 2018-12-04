@@ -9,7 +9,6 @@ import LoginLogout from "./LoginLogout";
 @observer
 export default class Header extends Component<any, any> {
   render() {
-
     const { ...store } = this.props.allStores;
 
     console.log(store);
@@ -18,7 +17,9 @@ export default class Header extends Component<any, any> {
       <div className="header-container">
         <div>CERTIFICATE LIFECYCLE MANAGER</div>
         <div className="options">
-          <div>LoggedinUser {store.userStore.loggedInUser !== null ? <span>someone</span> : <span>foo</span>} | <LoginLogout /></div>
+          <div>
+            LoggedinUser {store.userStore.loggedInUser !== null ? <span>someone</span> : <span>foo</span>} | <LoginLogout />
+          </div>
         </div>
       </div>
     );

@@ -12,7 +12,9 @@ export interface UserStoreInterface {
 
 export interface UserInterface {
   userName: string;
-  token: string;
+  accessToken: string;
+  idToken: string;
+  expiresAt: string;
 }
 export class UserStore implements UserStoreInterface {
   @observable public users: User[] = [];
@@ -29,5 +31,14 @@ export class UserStore implements UserStoreInterface {
 
 export class User implements UserInterface {
   userName = "";
-  token = "";
+  accessToken = "";
+  idToken = "";
+  expiresAt = "";
+
+  // constructor(userName: string, accessToken: string, idToken: string, expiresAt: string) {
+  //   this.userName = userName;
+  //   this.accessToken = accessToken;
+  //   this.idToken = idToken;
+  //   this.expiresAt = expiresAt;
+  // }
 }

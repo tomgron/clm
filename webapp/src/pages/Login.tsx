@@ -17,7 +17,7 @@ export default class Login extends Component<any, any> {
 
     const login = (e: any) => {
       e.preventDefault();
-      store.userStore.login("foo", "bar")
+      store.userStore.login("foo", "bar");
       this.setState({
         redirectToReferrer: true
       });
