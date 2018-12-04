@@ -16,10 +16,6 @@ import { RouterStore, syncHistoryWithStore, SynchronizedHistory } from "mobx-rea
 
 export default class App extends Component<any, any> {
   render() {
-    allStores.certificateStore.addCertificate(new Certificate("foo", "bar", Date.now(), Date.now()));
-    allStores.certificateStore.addCertificate(new Certificate("test", "asdfasdf", Date.now(), Date.now()));
-    allStores.certificateStore.addCertificate(new Certificate("zxvzxcv", "qwerqwer", Date.now(), Date.now()));
-
     const browserHistory = createBrowserHistory();
 
     const history = syncHistoryWithStore(browserHistory, allStores.routingStore);

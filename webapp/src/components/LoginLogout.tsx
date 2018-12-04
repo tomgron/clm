@@ -7,14 +7,11 @@ import { Link } from "react-router-dom";
 @observer
 export default class LoginLogout extends Component<any, any> {
   render() {
-    const { ...userStore } = this.props.allStores;
-    const { location, push, goBack } = this.props.allStores.routingStore;
+    const { ...store } = this.props.allStores;
 
-    const logout = () => userStore.logout();
+    const logout = () => store.userStore.logout();
 
-    console.log(userStore);
-
-    return userStore.loggedInUser ? (
+    return store.userStore.loggedInUser ? (
       <Link to="#" onClick={logout}>
         Logout
       </Link>

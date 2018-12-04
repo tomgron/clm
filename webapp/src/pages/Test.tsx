@@ -34,7 +34,7 @@ export default class Test extends Component<any, any> {
           if (json) {
             this.setState({ dataAvailable: true });
             allStores.certificateStore.certificates = []; // Clear old certs
-            json.map(i => allStores.certificateStore.addCertificate(new Certificate(i.name, i.thumbprint, i.validFrom, i.validThrough)));
+            json.map(i => allStores.certificateStore.addCertificate(new Certificate(i.id, i.name, i.thumbprint, i.validFrom, i.validThrough)));
           }
         });
 
@@ -47,7 +47,6 @@ export default class Test extends Component<any, any> {
         <button disabled={this.state.loading} onClick={getData}>
           Get data
         </button>
-        
         {this.state.dataAvailable && <ReactJson src={allStores.certificateStore.certificates} theme="monokai" displayDataTypes={true} displayObjectSize={true} collapsed={2} />}
       </div>
     );

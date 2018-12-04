@@ -22,14 +22,16 @@ namespace api.Controllers
                     Name = "www.calm.fi",
                     ValidFrom = DateTime.Parse("1.1.2017"),
                     ValidThrough =  DateTime.Parse("31.12.2018"),
-                    Thumbprint = "6834dd70b477e9618ca303465f4950ef71cf2420"
+                    Thumbprint = "6834dd70b477e9618ca303465f4950ef71cf2420",
+                    Id = Guid.NewGuid()
                 },
                 new Certificate
                 {
                     Name = "*.calm.fi",
                     ValidFrom = DateTime.Parse("4.5.2018"),
                     ValidThrough = DateTime.Parse("8.10.2019"),
-                    Thumbprint = "d637ff254c687465ab729c99e3526a8fdbb8dd40"
+                    Thumbprint = "d637ff254c687465ab729c99e3526a8fdbb8dd40",
+                    Id = Guid.NewGuid()
                 }
             };
         }

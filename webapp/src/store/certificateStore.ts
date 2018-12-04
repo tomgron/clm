@@ -9,6 +9,7 @@ export interface CertificateInterface {
   thumbprint: string;
   validFrom: number;
   validTo: number;
+  id: string;
 }
 
 export class CertificateStore implements CertificateStoreInterface {
@@ -26,8 +27,10 @@ export class Certificate implements CertificateInterface {
   @observable public thumbprint = "";
   @observable public validFrom: number;
   @observable public validTo: number;
+  @observable public id: string;
 
-  constructor(name: string, thumbprint: string, validFrom: number, validTo: number) {
+  constructor(id: string, name: string, thumbprint: string, validFrom: number, validTo: number) {
+    this.id = id;
     this.name = name;
     this.thumbprint = thumbprint;
     this.validFrom = validFrom;

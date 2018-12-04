@@ -10,16 +10,15 @@ import LoginLogout from "./LoginLogout";
 export default class Header extends Component<any, any> {
   render() {
 
-    const { ...allStores } = this.props.allStores;
+    const { ...store } = this.props.allStores;
 
-    console.log(allStores.userStore)
+    console.log(store);
 
     return (
       <div className="header-container">
         <div>CERTIFICATE LIFECYCLE MANAGER</div>
         <div className="options">
-          <div>LoggedinUser {allStores.userStore.loggedInUser && allStores.userStore.loggedInUser.userName}</div>
-          <LoginLogout />
+          <div>LoggedinUser {store.userStore.loggedInUser !== null ? <span>someone</span> : <span>foo</span>} | <LoginLogout /></div>
         </div>
       </div>
     );
