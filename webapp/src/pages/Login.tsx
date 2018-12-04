@@ -18,15 +18,13 @@ export default class Login extends Component<any, any> {
 
     const login = (e: any) => {
       e.preventDefault();
-      store.userStore.loggedInUser = new User();
-      this.setState(() => ({
+      store.userStore.login("foo", "bar")
+      this.setState({
         redirectToReferrer: true
-      }));
+      });
     };
 
     if (this.state.redirectToReferrer === true) {
-      console.log(store.userStore);
-
       const returnUrl = store.userStore.loggedInReturnUrl ? store.userStore.loggedInReturnUrl : "/";
 
       return <Redirect to={store.userStore.loggedInUser ? returnUrl : "/"} />;

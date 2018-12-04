@@ -4,6 +4,8 @@ import { UserInterface, User, UserStoreInterface } from "../store/userStore";
 import { inject, observer } from "mobx-react";
 import { CertificateInterface } from "../store/certificateStore";
 import Certificate from "../components/Certificate";
+import { Link } from 'react-router-dom'
+
 
 @inject("allStores")
 @observer
@@ -24,6 +26,7 @@ export default class Main extends Component<any, any> {
             </div>
           );
         })}
+        <div><Link to="Colors">Colors</Link></div>
       </div>
     );
   }
