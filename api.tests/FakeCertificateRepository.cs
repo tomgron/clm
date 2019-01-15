@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using api.Interfaces;
 using api.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace api.tests
 {
@@ -14,43 +16,75 @@ namespace api.tests
 
         public FakeCertificateRepository() => _repository = new List<Certificate>();
 
-        public Certificate GetCertificate(string thumbprint) => _repository.First(i => string.Compare(i.Thumbprint, thumbprint, StringComparison.InvariantCultureIgnoreCase) == 0);
-
-        public List<Certificate> GetCertificates(string[] thumbprints)
+        public async Task<ActionResult<Certificate>> GetCertificate(string thumbprint)
         {
-            List<Certificate> retValues = new List<Certificate>();
-            foreach (string item in thumbprints)
+            return await Task.Run(() =>
             {
-                try
-                {
-                    var certificate = _repository.First(i => string.Compare(i.Thumbprint, item, StringComparison.InvariantCultureIgnoreCase) == 0);
-                    if (certificate != null) retValues.Add(certificate);
-                }
-                catch (Exception ex)
-                {
-                    
-                }
-            }
-
-            return retValues;
+                return _repository.First(i =>
+                    string.Compare(i.Thumbprint, thumbprint, StringComparison.InvariantCultureIgnoreCase) == 0);
+            });
         }
 
-        public Certificate AddCertificate(Certificate certificate)
+        public async Task<ActionResult<List<Certificate>>> GetCertificates(string[] thumbprints)
         {
-            _repository.Add(certificate);
-            return certificate;
-        }
 
-        public Certificate UpdateCertificate(Certificate certificate)
-        {
-            for (int i = 0; i < _repository.Count; i++)
+            var itemsToReturn = Task.Run(() =>
             {
-                if (_repository[i].Thumbprint == certificate.Thumbprint) _repository[i] = certificate;
-            }
+                List<Certificate> retValues = new List<Certificate>();
 
-            return certificate;
+                foreach (string item in thumbprints)
+                {
+                    try
+                    {
+                        var certificate = _repository.First(i => string.Compare(i.Thumbprint, item, StringComparison.InvariantCultureIgnoreCase) == 0);
+                        if (certificate != null) retValues.Add(certificate);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+
+                return retValues;
+            });
+
+            return await itemsToReturn;
         }
 
-        public bool DeleteCertificate(string thumbprint) =>_repository.Remove(_repository.First(i => i.Thumbprint == thumbprint));
+        public async Task<ActionResult<Certificate>> AddCertificate(Certificate certificate)
+        {
+            var cert = Task.Run(() =>
+            {
+                _repository.Add(certificate);
+                return certificate;
+            });
+
+            return await cert;
+        }
+
+        public async Task<ActionResult<Certificate>> UpdateCertificate(Certificate certificate)
+        {
+            var retVal = Task.Run(() =>
+            {
+                for (int i = 0; i < _repository.Count; i++)
+                {
+                    if (_repository[i].Thumbprint == certificate.Thumbprint) _repository[i] = certificate;
+                }
+
+                return certificate;
+            });
+
+            return await retVal;
+        }
+
+        public async Task<ActionResult<bool>> DeleteCertificate(string thumbprint)
+        {
+            var result = Task.Run(() =>
+            {
+                return _repository.Remove(_repository.First(i => i.Thumbprint == thumbprint));
+            });
+
+            return await result;
+        }
     }
 }

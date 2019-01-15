@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Interfaces;
+using api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,17 @@ namespace api.Controllers
     [ApiController]
     public class CertificateController : ApiControllerBase
     {
+        private ICertificateRepository _certificateRepository;
+        public CertificateController(ICertificateRepository certificateRepository)
+        {
+            _certificateRepository = certificateRepository;
+        }
+
         // GET: api/Certificate
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _certificateRepository?.GetCertificate("foofoo");
             return new string[] { "value1", "value2" };
         }
 
@@ -27,8 +36,9 @@ namespace api.Controllers
 
         // POST: api/Certificate
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<Certificate>> Post([FromBody] Certificate certificate)
         {
+            return await _certificateRepository?.AddCertificate(certificate);
         }
 
         // PUT: api/Certificate/5
@@ -38,9 +48,10 @@ namespace api.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{thumbprint}")]
+        public async Task<ActionResult<bool>> Delete(string thumbprint)
         {
+            return await _certificateRepository.DeleteCertificate(thumbprint);
         }
     }
 }
