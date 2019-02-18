@@ -31,6 +31,8 @@ namespace api
             });
 
             services.AddSingleton<ICertificateRepository>(new CertificateRepository(Configuration));
+            services.AddSingleton<ITenantRepository>(new TenantRepository(Configuration));
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,8 +45,6 @@ namespace api
             });
 
             services.AddIdentityWithMongoStores(Configuration.GetConnectionString("mongoDbConnection"));
-            services.AddScoped<CertificateRepository>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

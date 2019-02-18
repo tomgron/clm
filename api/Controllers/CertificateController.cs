@@ -14,15 +14,12 @@ namespace api.Controllers
     public class CertificateController : ApiControllerBase
     {
         private ICertificateRepository _certificateRepository;
-        public CertificateController(ICertificateRepository certificateRepository)
-        {
-            _certificateRepository = certificateRepository;
-        }
+        public CertificateController(ICertificateRepository certificateRepository) => _certificateRepository = certificateRepository;
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Certificate>>> Get(string[] thumbprints) => Ok(await _certificateRepository?.GetCertificates(thumbprints));
 
-        [HttpGet("{thumbprint}", Name = "Get")]
+        [HttpGet("{thumbprint}")]
         public async Task<ActionResult<Certificate>> Get(string thumbprint) => Ok(await _certificateRepository?.GetCertificate(thumbprint));
 
         [HttpPost]
