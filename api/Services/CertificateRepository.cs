@@ -5,41 +5,43 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 
 namespace api.Services
 {
     public class CertificateRepository : ICertificateRepository
     {
+        private readonly IMongoCollection<Certificate> _certificates;
 
         public CertificateRepository(IConfiguration configuration)
         {
+            var client = new MongoClient(configuration.GetConnectionString("mongoDbConnection"));
+            var database = client.GetDatabase(configuration.GetValue<string>("mongoDbDatabase"));
+            _certificates =
+                database.GetCollection<Certificate>(configuration.GetValue<string>("certificateCollection"));
         }
 
-        public async Task<ActionResult<Certificate>> AddCertificate(Certificate certificate)
+        public async void AddCertificate(Certificate certificate) => await _certificates.InsertOneAsync(certificate);
+
+        public async void DeleteCertificate(string thumbprint) => await _certificates.DeleteOneAsync(cert => cert.Thumbprint == thumbprint);
+
+        public async Task<Certificate> GetCertificate(string thumbprint) => await _certificates.FindAsync<Certificate>(cert => cert.Thumbprint == thumbprint).Result.FirstOrDefaultAsync();
+
+        public async Task<List<Certificate>> GetCertificates(string[] thumbprints)
         {
-            throw new NotImplementedException();
+            var results = new List<Certificate>();
+
+            foreach (string thumbprint in thumbprints)
+            {
+                var res = await GetCertificate(thumbprint);
+                if (res != null) results.Add(res);
+            }
+
+            return results;
         }
 
-        public async Task<ActionResult<bool>> DeleteCertificate(string thumbprint)
-        {
-
-            throw new NotImplementedException();
-        }
-
-        public async Task<ActionResult<Certificate>> GetCertificate(string thumbprint)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ActionResult<List<Certificate>>> GetCertificates(string[] thumbprints)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ActionResult<Certificate>> UpdateCertificate(Certificate certificate)
-        {
-            throw new NotImplementedException();
-        }
+        public async void UpdateCertificate(Certificate certificate)  => await _certificates.ReplaceOneAsync(cert => cert.Thumbprint == certificate.Thumbprint, certificate);
     }
 }

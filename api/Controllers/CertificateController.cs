@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
 
 namespace api.Controllers
@@ -18,39 +19,33 @@ namespace api.Controllers
             _certificateRepository = certificateRepository;
         }
 
-        // GET: api/Certificate
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            _certificateRepository?.GetCertificate("foofoo");
-            return new string[] { "value1", "value2" };
-        }
+        public async Task<ActionResult<IEnumerable<Certificate>>> Get(string[] thumbprints) => Ok(await _certificateRepository?.GetCertificates(thumbprints));
 
-        // GET: api/Certificate/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        [HttpGet("{thumbprint}", Name = "Get")]
+        public async Task<ActionResult<Certificate>> Get(string thumbprint) => Ok(await _certificateRepository?.GetCertificate(thumbprint));
 
-        // POST: api/Certificate
         [HttpPost]
-        public async Task<ActionResult<Certificate>> Post([FromBody] Certificate certificate)
+        public ActionResult Post([FromBody] Certificate certificate)
         {
-            return await _certificateRepository?.AddCertificate(certificate);
+            _certificateRepository?.AddCertificate(certificate);
+            return Ok();
         }
 
-        // PUT: api/Certificate/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{thumbprint}")]
+        public ActionResult Put([FromBody] Certificate certificate)
         {
+            _certificateRepository?.UpdateCertificate(certificate);
+            return Ok();
+
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{thumbprint}")]
-        public async Task<ActionResult<bool>> Delete(string thumbprint)
+        public ActionResult Delete(string thumbprint)
         {
-            return await _certificateRepository.DeleteCertificate(thumbprint);
+            _certificateRepository?.DeleteCertificate(thumbprint);
+            return Ok();
         }
     }
 }

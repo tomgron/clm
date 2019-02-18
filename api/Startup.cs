@@ -1,4 +1,5 @@
-﻿using api.Interfaces;
+﻿using System;
+using api.Interfaces;
 using api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -40,6 +41,10 @@ namespace api
                 options.Audience = "https://calm.eu.auth0.com";
                 options.RequireHttpsMetadata = false;
             });
+
+            services.AddIdentityWithMongoStores(Configuration.GetConnectionString("mongoDbConnection"));
+            services.AddScoped<CertificateRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +73,7 @@ namespace api
                 app.UseHsts();
             }
 
+            
             // app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();
