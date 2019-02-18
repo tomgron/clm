@@ -1,6 +1,6 @@
 {
-  "short_name": "CLM",
-  "name": "Certificate Lifecycle Manager",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
