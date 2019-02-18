@@ -1,5 +1,6 @@
 ﻿using api.Interfaces;
 using api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,16 @@ namespace api
             });
 
             services.AddSingleton<ICertificateRepository>(new CertificateRepository(Configuration));
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "http://localhost";
+                options.Audience = "https://calm.eu.auth0.com";
+                options.RequireHttpsMetadata = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,8 +67,9 @@ namespace api
                 //TODO: Set exception page to something really funky
                 app.UseHsts();
             }
-            
+
             // app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
             app.UseCors();
         }

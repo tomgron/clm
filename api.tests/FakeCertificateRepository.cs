@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using api.Interfaces;
+﻿using api.Interfaces;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace api.tests
 {
@@ -39,7 +38,7 @@ namespace api.tests
                         var certificate = _repository.First(i => string.Compare(i.Thumbprint, item, StringComparison.InvariantCultureIgnoreCase) == 0);
                         if (certificate != null) retValues.Add(certificate);
                     }
-                    catch (Exception ex)
+                    catch
                     {
 
                     }

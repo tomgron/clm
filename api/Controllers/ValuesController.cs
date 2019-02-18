@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -12,6 +11,7 @@ namespace api.Controllers
     public class ValuesController : ControllerBase
     {
         // GET api/values
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<Certificate>> Get()
         {

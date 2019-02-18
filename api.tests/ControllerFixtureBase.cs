@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using api.Interfaces;
+﻿using api.Interfaces;
+using System;
 
 namespace api.tests
 {
