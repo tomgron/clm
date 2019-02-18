@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using api.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using api.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace api.Interfaces
 {

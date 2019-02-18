@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>api</name>
+    </assembly>
+    <members>
+        <member name="M:api.Controllers.CertificateController.Get(System.String[])">
+            <summary>
+            Gets multiple certificates as an array
+            </summary>
+            <param name="thumbprints">string array of thumbprints</param>
+            <returns>array of certificates</returns>
+        </member>
+        <member name="M:api.Controllers.CertificateController.Get(System.String)">
+            <summary>
+            Gets single certificate based on thumbprint
+            </summary>
+            <param name="thumbprint">PKCS thumbprint</param>
+            <returns>Single certificate object</returns>
+        </member>
+        <member name="M:api.Controllers.SubscriptionController.Get">
+            <summary>
+            Get all subscriptions in repository. WARNING : this gets all tenants all subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.SubscriptionController.Get(System.String)">
+            <summary>
+            Get single subscription
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:api.Controllers.TenantController.Get(System.String)">
+            <summary>
+            Gets single tenant based on id
+            </summary>
+            <param name="id">Tenant id</param>
+            <returns>Tenant object</returns>
+        </member>
+        <member name="M:api.Controllers.TenantController.GetTenantSubscriptions(System.String)">
+            <summary>
+            Gets all chosen tenant's subscriptions
+            </summary>
+            <param name="tenantid">24 characted hex objectid</param>
+            <returns>array of subscriptions for this tenant</returns>
+        </member>
+    </members>
+</doc>

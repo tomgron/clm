@@ -1,5 +1,4 @@
-﻿using System;
-using api.Interfaces;
+﻿using api.Interfaces;
 using api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace api
 {
@@ -28,10 +30,18 @@ namespace api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "CLM API", Version = "v1" });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
 
+            // Add repositories to IoC container
             services.AddSingleton<ICertificateRepository>(new CertificateRepository(Configuration));
             services.AddSingleton<ITenantRepository>(new TenantRepository(Configuration));
+            services.AddSingleton<ISubscriptionRepository>(new SubscriptionRepository(Configuration));
 
             services.AddAuthentication(options =>
             {
@@ -53,7 +63,8 @@ namespace api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseCors(policy => {
+                app.UseCors(policy =>
+                {
                     policy.AllowAnyOrigin();
                     policy.AllowAnyMethod();
                     policy.AllowAnyHeader();
@@ -73,7 +84,7 @@ namespace api
                 app.UseHsts();
             }
 
-            
+
             // app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();

@@ -1,13 +1,11 @@
 ﻿using api.Interfaces;
 using api.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
-using MongoDB.Driver;
 
 namespace api.Services
 {
@@ -42,6 +40,6 @@ namespace api.Services
             return results;
         }
 
-        public async void UpdateCertificate(Certificate certificate)  => await _certificates.ReplaceOneAsync(cert => cert.Thumbprint == certificate.Thumbprint, certificate);
+        public async void UpdateCertificate(Certificate certificate) => await _certificates.ReplaceOneAsync(cert => cert.Thumbprint == certificate.Thumbprint, certificate);
     }
 }

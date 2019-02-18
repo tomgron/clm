@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using api.Models;
 using System.Threading.Tasks;
-using api.Models;
 
 namespace api.Interfaces
 {
