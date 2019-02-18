@@ -2,8 +2,10 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace api.Models {
-    public class Certificate {
+namespace api.Models
+{
+    public class Certificate
+    {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
