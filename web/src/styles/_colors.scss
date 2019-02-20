@@ -1,7 +1,12 @@
 // PRIMARY COLORS
-$green  : #0f0;
-$red    : #f00;
-$blue   : #00f;
+$dark_green : #003542;
+$light_green : #74E0D4;
+$white  : #F3FBFF;
+$orange : #FA9028;
+$red : #FF0044;
 
-$background_color   : #eee;
-$text_color         : #333;
+$background_color   : $dark_green;
+$text_color         : $dark_green;
+$menu_background    : $orange;
+$content_background : $white;
+$footer_background  : $dark_green;

@@ -6,8 +6,34 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   color: $text_color;
   background-color: $background_color
 }
 
+.menu_area {
+  margin: 20px 20px 5px 20px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: $menu_background;
+  color: $white;
+}
+
+.content_area {
+  margin: 0px 20px 20px 20px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: $white;
+  min-height: 500px;
+}
+
+.footer_area {
+  width: auto;
+  height: 200px;
+  margin: 0px 20px 20px 20px;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: $footer_background;
+  color: $white;
+  border: 1px $white solid;
+}

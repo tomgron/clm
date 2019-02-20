@@ -5,13 +5,15 @@
   "dependencies": {
     "@types/jest": "24.0.6",
     "@types/node": "11.9.4",
-    "@types/react": "16.8.3",
+    "@types/react": "16.8.4",
     "@types/react-dom": "16.8.2",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "node-sass": "^4.11.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "typescript": "3.3.3"
   },
@@ -25,6 +27,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "@types/react-router-dom": "^4.3.1",
     "@typescript-eslint/parser": "^1.3.0",
     "mobx-react-devtools": "^6.0.3"
   },
