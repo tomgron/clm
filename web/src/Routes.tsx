@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-export const Routes = () => (
+export const Routes = (props:any) => (
   <Router>
-    <Route children={Children} />
+    <Route children={props.children} />
   </Router>
 )

@@ -1,4 +1,5 @@
-export const store = {
+import { UserStore } from './user'
 
-    foo: "bar"
+export default {
+  Users:UserStore
 }
