@@ -6,13 +6,13 @@ export class UserStore {
 }
 
 export class User implements IUser {
-  name: string | undefined;
+  name : string | undefined;
   token: string | undefined;
   roles: string[] | undefined;
 }
 
 export interface IUser {
-  name:string | undefined,
-  token:string | undefined,
-  roles:Array<string> | undefined
+  name : string | undefined,
+  token: string | undefined,
+  roles: Array<string> | undefined
 }
